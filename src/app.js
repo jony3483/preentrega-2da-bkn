@@ -42,13 +42,13 @@ io.on("connection", async (socket) => {
     socket.on("eliminarProducto", async (id) => {
         await productManager.deleteProduct(id);
 
-        io.socket.emit("productos", await productManager.getProducts());
+        io.emit("productos", await productManager.getProducts());
     })
 
     socket.on("agregarProducto", async (producto) => {
         await productManager.addProduct(producto);
 
-        io.socket.emit("productos", await productManager.getProducts());
+        io.emit("productos", await productManager.getProducts());
 
     })
 })
